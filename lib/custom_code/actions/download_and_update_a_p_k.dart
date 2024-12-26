@@ -10,148 +10,96 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'dart:io';
-import 'dart:async';
-import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:android_intent_plus/android_intent.dart';
-import 'package:http/http.dart' as http;
-import 'package:android_intent_plus/flag.dart';
+import 'package:flutter/material.dart';
+import 'package:ota_update/ota_update.dart';
 
-Future<bool> downloadAndUpdateAPK(BuildContext context, String apkUrl) async {
-  // Check if platform is Android
-  if (!Platform.isAndroid) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('This feature is only available on Android devices'),
-        backgroundColor: Colors.red,
-      ),
-    );
-    return false;
-  }
-
-  // Create a StreamController to handle download progress
-  final progressController = StreamController<double>();
-  ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? progressSnackBar;
-
-  void showProgressSnackBar() {
-    progressSnackBar = ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: StreamBuilder<double>(
-          stream: progressController.stream,
-          builder: (context, snapshot) {
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text('Downloading update...'),
-                const SizedBox(height: 8),
-                LinearProgressIndicator(
-                  value: snapshot.data ?? 0,
-                  backgroundColor: Colors.grey[300],
-                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.blue),
-                ),
-                if (snapshot.hasData)
-                  Text('${(snapshot.data! * 100).toStringAsFixed(1)}%'),
-              ],
-            );
-          },
-        ),
-        duration: const Duration(
-            days: 1), // Long duration, will be dismissed manually
-        backgroundColor: Colors.white,
-      ),
-    );
-  }
-
+Future<void> downloadAndUpdateAPK(BuildContext context, String apkUrl) async {
   try {
-    // Request installation permissions
-    if (!await Permission.requestInstallPackages.isGranted) {
-      final status = await Permission.requestInstallPackages.request();
-      if (status.isDenied) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Permission denied to install packages'),
-            backgroundColor: Colors.red,
-          ),
-        );
-        return false;
-      }
-    }
-
-    // Create a temporary directory to store the downloaded APK
-    final tempDir = await getTemporaryDirectory();
-    final filePath = '${tempDir.path}/app-update.apk';
-    final file = File(filePath);
-
-    // Download the APK with progress
-    try {
-      final client = http.Client();
-      final request = http.Request('GET', Uri.parse(apkUrl));
-      final response = await client.send(request);
-
-      if (response.statusCode != 200) {
-        throw Exception('Failed to download APK: HTTP ${response.statusCode}');
-      }
-
-      final contentLength = response.contentLength ?? 0;
-      int receivedBytes = 0;
-
-      showProgressSnackBar();
-
-      final sink = file.openWrite();
-      await response.stream.forEach((chunk) {
-        sink.add(chunk);
-        receivedBytes += chunk.length;
-        if (contentLength > 0) {
-          progressController.add(receivedBytes / contentLength);
-        }
-      });
-
-      await sink.close();
-      await progressController.close();
-      progressSnackBar?.close();
-    } catch (e) {
-      progressController.close();
-      progressSnackBar?.close();
+    // Check if platform is Android
+    if (!Platform.isAndroid) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Failed to download APK: ${e.toString()}'),
+        const SnackBar(
+          content: Text('This feature is only available on Android devices'),
           backgroundColor: Colors.red,
         ),
       );
-      return false;
+      return;
     }
 
-    // Install the APK
-    if (await file.exists()) {
-      final intent = AndroidIntent(
-        action: 'action_view',
-        data: 'file://$filePath',
-        type: 'application/vnd.android.package-archive',
-        flags: [
-          Flag.FLAG_ACTIVITY_NEW_TASK,
-          Flag.FLAG_GRANT_READ_URI_PERMISSION
-        ],
-      );
-      await intent.launch();
-      return true;
-    }
-
+    // Show initial loading message
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('Failed to save APK file'),
-        backgroundColor: Colors.red,
+        content: Text('Starting download...'),
+        duration: Duration(seconds: 2),
+        backgroundColor: Colors.blue,
       ),
     );
-    return false;
+
+    // Create OTA Update instance
+    final ota = OtaUpdate();
+
+    // Start download with status updates
+    ota.execute(
+      apkUrl,
+      destinationFilename: 'app-update.apk',
+    ).listen(
+          (OtaEvent event) {
+        switch (event.status) {
+          case OtaStatus.DOWNLOADING:
+          // You can show progress here if needed
+            break;
+          case OtaStatus.INSTALLING:
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Installing update...'),
+                duration: Duration(seconds: 2),
+                backgroundColor: Colors.blue,
+              ),
+            );
+            break;
+          case OtaStatus.PERMISSION_NOT_GRANTED_ERROR:
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Permission denied to install updates'),
+                backgroundColor: Colors.red,
+              ),
+            );
+            break;
+          case OtaStatus.DOWNLOAD_ERROR:
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Download error: ${event.value}'),
+                backgroundColor: Colors.red,
+              ),
+            );
+            break;
+          case OtaStatus.INTERNAL_ERROR:
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Internal error: ${event.value}'),
+                backgroundColor: Colors.red,
+              ),
+            );
+            break;
+          default:
+            break;
+        }
+      },
+      onError: (error) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error updating app: $error'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      },
+    );
   } catch (e) {
-    progressController.close();
-    progressSnackBar?.close();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Error installing APK: ${e.toString()}'),
+        content: Text('Error: ${e.toString()}'),
         backgroundColor: Colors.red,
       ),
     );
-    return false;
   }
 }
