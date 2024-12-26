@@ -1,3 +1,5 @@
+import '/custom_code/actions/index.dart' as actions;
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -15,6 +17,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
+
+  // Start initial custom actions code
+  await actions.changeStatusBarColor();
+  // End initial custom actions code
 
   await authManager.initialize();
 
@@ -108,6 +114,8 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'Dashboard': const DashboardWidget(),
       'Activites': const ActivitesWidget(),
+      'Referral': const ReferralWidget(),
+      'profile': const ProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -126,26 +134,26 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
-        backgroundColor: FlutterFlowTheme.of(context).netural100,
-        selectedItemColor: FlutterFlowTheme.of(context).primary500,
-        unselectedItemColor: FlutterFlowTheme.of(context).netrual500,
-        selectedBackgroundColor: FlutterFlowTheme.of(context).netural100,
-        borderRadius: 8.0,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        selectedItemColor: FlutterFlowTheme.of(context).primary,
+        unselectedItemColor: const Color(0xFF7F7F7F),
+        selectedBackgroundColor: const Color(0x1D4747EE),
+        borderRadius: 0.0,
         itemBorderRadius: 8.0,
         margin: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
         padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
         width: double.infinity,
-        elevation: 0.0,
+        elevation: 0.5,
         items: [
           FloatingNavbarItem(
             customWidget: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.home_outlined,
+                  FFIcons.kksmartHome,
                   color: currentIndex == 0
-                      ? FlutterFlowTheme.of(context).primary500
-                      : FlutterFlowTheme.of(context).netrual500,
+                      ? FlutterFlowTheme.of(context).primary
+                      : const Color(0xFF7F7F7F),
                   size: 24.0,
                 ),
                 Text(
@@ -153,8 +161,8 @@ class _NavBarPageState extends State<NavBarPage> {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 0
-                        ? FlutterFlowTheme.of(context).primary500
-                        : FlutterFlowTheme.of(context).netrual500,
+                        ? FlutterFlowTheme.of(context).primary
+                        : const Color(0xFF7F7F7F),
                     fontSize: 11.0,
                   ),
                 ),
@@ -168,8 +176,8 @@ class _NavBarPageState extends State<NavBarPage> {
                 Icon(
                   Icons.history,
                   color: currentIndex == 1
-                      ? FlutterFlowTheme.of(context).primary500
-                      : FlutterFlowTheme.of(context).netrual500,
+                      ? FlutterFlowTheme.of(context).primary
+                      : const Color(0xFF7F7F7F),
                   size: 24.0,
                 ),
                 Text(
@@ -177,8 +185,56 @@ class _NavBarPageState extends State<NavBarPage> {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 1
-                        ? FlutterFlowTheme.of(context).primary500
-                        : FlutterFlowTheme.of(context).netrual500,
+                        ? FlutterFlowTheme.of(context).primary
+                        : const Color(0xFF7F7F7F),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  FFIcons.kkusersGroup,
+                  color: currentIndex == 2
+                      ? FlutterFlowTheme.of(context).primary
+                      : const Color(0xFF7F7F7F),
+                  size: 24.0,
+                ),
+                Text(
+                  'Referral',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 2
+                        ? FlutterFlowTheme.of(context).primary
+                        : const Color(0xFF7F7F7F),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.person,
+                  color: currentIndex == 3
+                      ? FlutterFlowTheme.of(context).primary
+                      : const Color(0xFF7F7F7F),
+                  size: 24.0,
+                ),
+                Text(
+                  'Account',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 3
+                        ? FlutterFlowTheme.of(context).primary
+                        : const Color(0xFF7F7F7F),
                     fontSize: 11.0,
                   ),
                 ),

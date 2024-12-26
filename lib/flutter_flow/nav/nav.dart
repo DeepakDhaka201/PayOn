@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 
 import '/auth/custom_auth/custom_auth_user_provider.dart';
 
@@ -16,6 +17,8 @@ export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
+
+GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
 class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
@@ -74,14 +77,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
+      navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const SplashWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
+              appStateNotifier.loggedIn ? const NavBarPage() : const SplashWidget(),
         ),
         FFRoute(
           name: 'Splash',
@@ -99,15 +103,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const SignUpWidget(),
         ),
         FFRoute(
-          name: 'otpverify',
+          name: 'otp-verify',
           path: '/verify-otp',
-          builder: (context, params) => OtpverifyWidget(
-            phoneNumber: params.getParam(
-              'phoneNumber',
+          builder: (context, params) => OtpVerifyWidget(
+            mobile: params.getParam(
+              'mobile',
               ParamType.String,
             ),
-            secret: params.getParam(
-              'secret',
+            purpose: params.getParam<OtpPurpose>(
+              'purpose',
+              ParamType.Enum,
+            ),
+            name: params.getParam(
+              'name',
+              ParamType.String,
+            ),
+            referralCode: params.getParam(
+              'referralCode',
+              ParamType.String,
+            ),
+            walletPin: params.getParam(
+              'walletPin',
               ParamType.String,
             ),
           ),
@@ -115,6 +131,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Dashboard',
           path: '/dashboard',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'Dashboard')
               : const DashboardWidget(),
@@ -125,6 +142,197 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'Activites')
               : const ActivitesWidget(),
+        ),
+        FFRoute(
+          name: 'DepositUsdt',
+          path: '/depositUsdt',
+          builder: (context, params) => const DepositUsdtWidget(),
+        ),
+        FFRoute(
+          name: 'DepositStatus',
+          path: '/depositStatus',
+          builder: (context, params) => DepositStatusWidget(
+            transactionId: params.getParam(
+              'transactionId',
+              ParamType.int,
+            ),
+            transaction: params.getParam(
+              'transaction',
+              ParamType.JSON,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'BuyUsdtVerify',
+          path: '/buyUsdtVerify',
+          builder: (context, params) => BuyUsdtVerifyWidget(
+            transaction: params.getParam(
+              'transaction',
+              ParamType.JSON,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'BuyStatusCopy',
+          path: '/buyStatusCopy',
+          builder: (context, params) => BuyStatusCopyWidget(
+            transaction: params.getParam(
+              'transaction',
+              ParamType.JSON,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'SellUsdt',
+          path: '/sellUsdt',
+          builder: (context, params) => const SellUsdtWidget(),
+        ),
+        FFRoute(
+          name: 'SellUsdtOrderCopy',
+          path: '/sellUsdtOrderCopy',
+          builder: (context, params) => SellUsdtOrderCopyWidget(
+            amountUsdt: params.getParam(
+              'amountUsdt',
+              ParamType.double,
+            ),
+            amountInr: params.getParam(
+              'amountInr',
+              ParamType.double,
+            ),
+            rate: params.getParam(
+              'rate',
+              ParamType.double,
+            ),
+            paymentMode: params.getParam(
+              'paymentMode',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'SellStatus',
+          path: '/sellStatus',
+          builder: (context, params) => SellStatusWidget(
+            transaction: params.getParam(
+              'transaction',
+              ParamType.JSON,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Referral',
+          path: '/referrals',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'Referral')
+              : const ReferralWidget(),
+        ),
+        FFRoute(
+          name: 'profile',
+          path: '/profile',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'profile')
+              : const ProfileWidget(),
+        ),
+        FFRoute(
+          name: 'WithdrawUsdt',
+          path: '/withdrawUsdt',
+          builder: (context, params) => const WithdrawUsdtWidget(),
+        ),
+        FFRoute(
+          name: 'WithdrawStatus',
+          path: '/withdrawStatus',
+          builder: (context, params) => WithdrawStatusWidget(
+            transaction: params.getParam(
+              'transaction',
+              ParamType.JSON,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'BankAccounts',
+          path: '/bankAccounts',
+          builder: (context, params) => const BankAccountsWidget(),
+        ),
+        FFRoute(
+          name: 'Support',
+          path: '/support',
+          builder: (context, params) => SupportWidget(
+            telegramId: params.getParam(
+              'telegramId',
+              ParamType.String,
+            ),
+            email: params.getParam(
+              'email',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'TermsConditions',
+          path: '/terms_conditions',
+          builder: (context, params) => const TermsConditionsWidget(),
+        ),
+        FFRoute(
+          name: 'NotificationsSetting',
+          path: '/notifications/setting',
+          builder: (context, params) => const NotificationsSettingWidget(),
+        ),
+        FFRoute(
+          name: 'BuyUsdtV2',
+          path: '/buy_usdt_v2',
+          builder: (context, params) => const BuyUsdtV2Widget(),
+        ),
+        FFRoute(
+          name: 'TransactionDetail',
+          path: '/transaction_detail',
+          builder: (context, params) => TransactionDetailWidget(
+            transaction: params.getParam(
+              'transaction',
+              ParamType.JSON,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Notifications',
+          path: '/notifications',
+          builder: (context, params) => const NotificationsWidget(),
+        ),
+        FFRoute(
+          name: 'BuyClaimOptions',
+          path: '/buy_claim_options',
+          requireAuth: true,
+          builder: (context, params) => BuyClaimOptionsWidget(
+            amountInr: params.getParam(
+              'amountInr',
+              ParamType.double,
+            ),
+            amountUsdt: params.getParam(
+              'amountUsdt',
+              ParamType.double,
+            ),
+            rate: params.getParam(
+              'rate',
+              ParamType.double,
+            ),
+            payMode: params.getParam(
+              'payMode',
+              ParamType.String,
+            ),
+            rates: params.getParam(
+              'rates',
+              ParamType.JSON,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Update',
+          path: '/update',
+          builder: (context, params) => UpdateWidget(
+            config: params.getParam(
+              'config',
+              ParamType.JSON,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -295,7 +503,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/login';
+            return '/splash';
           }
           return null;
         },
@@ -309,14 +517,14 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
+              ? Container(
+                  color: FlutterFlowTheme.of(context).primary,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/Image_37_(1).png',
+                      width: 200.0,
+                      height: 200.0,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )

@@ -1,4 +1,5 @@
-import '/components/logowithname_widget.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -46,21 +47,74 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primary500,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         body: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-              child: wrapWithModel(
-                model: _model.logowithnameModel,
-                updateCallback: () => safeSetState(() {}),
-                child: const LogowithnameWidget(),
+            Flexible(
+              child: Align(
+                alignment: const AlignmentDirectional(0.0, 0.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Align(
+                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      child: Container(
+                        width: 179.0,
+                        decoration: const BoxDecoration(),
+                        child: Align(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.asset(
+                                  'assets/images/Image_37_(1).png',
+                                  width: 86.0,
+                                  height: 113.0,
+                                  fit: BoxFit.fill,
+                                  alignment: const Alignment(0.0, -1.0),
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 30.0, 0.0, 0.0),
+                                  child: Text(
+                                    'PayOn\n',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .displaySmall
+                                        .override(
+                                          fontFamily: 'Archivo',
+                                          color: Colors.white,
+                                          fontSize: 36.0,
+                                          letterSpacing: 1.3,
+                                          fontWeight: FontWeight.w600,
+                                          lineHeight: 1.0,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Align(
@@ -102,7 +156,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: Text(
-                        'Sing Up',
+                        'Sign Up',
                         style:
                             FlutterFlowTheme.of(context).headlineSmall.override(
                                   fontFamily: 'Archivo',
@@ -112,17 +166,17 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 15.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 10.0),
                       child: SizedBox(
                         width: MediaQuery.sizeOf(context).width * 0.85,
                         child: TextFormField(
                           controller: _model.textController1,
                           focusNode: _model.textFieldFocusNode1,
-                          autofocus: false,
+                          autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
                             isDense: true,
-                            labelText: 'Phone Number',
+                            labelText: 'Name',
                             labelStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -131,7 +185,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
                                 ),
-                            hintText: 'Enter Phone Number',
+                            hintText: 'Enter your Name',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
@@ -185,7 +239,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 15.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 10.0),
                       child: SizedBox(
                         width: MediaQuery.sizeOf(context).width * 0.85,
                         child: TextFormField(
@@ -195,7 +249,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             isDense: true,
-                            labelText: 'Email',
+                            labelText: 'Phone Number',
                             labelStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -204,153 +258,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
                                 ),
-                            hintText: 'Enter Email Address',
-                            hintStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Inter',
-                                  letterSpacing: 0.0,
-                                ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Color(0xFFF4F0F0),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).primary350,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            filled: true,
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                          textAlign: TextAlign.start,
-                          cursorColor: FlutterFlowTheme.of(context).primaryText,
-                          validator: _model.textController2Validator
-                              .asValidator(context),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 15.0),
-                      child: SizedBox(
-                        width: MediaQuery.sizeOf(context).width * 0.85,
-                        child: TextFormField(
-                          controller: _model.textController3,
-                          focusNode: _model.textFieldFocusNode3,
-                          autofocus: false,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            isDense: true,
-                            labelText: 'Password',
-                            labelStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Inter',
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                            hintText: 'Enter Password',
-                            hintStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Inter',
-                                  letterSpacing: 0.0,
-                                ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Color(0xFFF4F0F0),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).primary350,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            filled: true,
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                          textAlign: TextAlign.start,
-                          cursorColor: FlutterFlowTheme.of(context).primaryText,
-                          validator: _model.textController3Validator
-                              .asValidator(context),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 20.0),
-                      child: SizedBox(
-                        width: MediaQuery.sizeOf(context).width * 0.85,
-                        child: TextFormField(
-                          controller: _model.textController4,
-                          focusNode: _model.textFieldFocusNode4,
-                          autofocus: false,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            isDense: true,
-                            labelText: 'Confirm Password',
-                            labelStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Inter',
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                            hintText: 'Enter Password',
+                            hintText: 'Enter your phone number',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
@@ -394,8 +302,168 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                     fontFamily: 'Inter',
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.normal,
                                   ),
+                          cursorColor: FlutterFlowTheme.of(context).primaryText,
+                          validator: _model.textController2Validator
+                              .asValidator(context),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 10.0),
+                      child: SizedBox(
+                        width: MediaQuery.sizeOf(context).width * 0.85,
+                        child: TextFormField(
+                          controller: _model.textController3,
+                          focusNode: _model.textFieldFocusNode3,
+                          autofocus: false,
+                          obscureText: !_model.passwordVisibility,
+                          decoration: InputDecoration(
+                            isDense: true,
+                            labelText: 'Wallet Pin',
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                            hintText: 'Enter your Wallet Pin ',
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color(0xFFF4F0F0),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary350,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            filled: true,
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            suffixIcon: InkWell(
+                              onTap: () => safeSetState(
+                                () => _model.passwordVisibility =
+                                    !_model.passwordVisibility,
+                              ),
+                              focusNode: FocusNode(skipTraversal: true),
+                              child: Icon(
+                                _model.passwordVisibility
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                                size: 20.0,
+                              ),
+                            ),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Inter',
+                                    fontSize: 16.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                          textAlign: TextAlign.start,
+                          keyboardType: TextInputType.number,
+                          cursorColor: FlutterFlowTheme.of(context).primaryText,
+                          validator: _model.textController3Validator
+                              .asValidator(context),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 10.0),
+                      child: SizedBox(
+                        width: MediaQuery.sizeOf(context).width * 0.85,
+                        child: TextFormField(
+                          controller: _model.textController4,
+                          focusNode: _model.textFieldFocusNode4,
+                          autofocus: false,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            isDense: true,
+                            labelText: 'Referral Code',
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                            hintText: 'Enter referral code',
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color(0xFFF4F0F0),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary350,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            filled: true,
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Inter',
+                                    fontSize: 16.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                          textAlign: TextAlign.start,
                           cursorColor: FlutterFlowTheme.of(context).primaryText,
                           validator: _model.textController4Validator
                               .asValidator(context),
@@ -406,8 +474,79 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          var shouldSetState = false;
+                          _model.sendOtpResponseCopy =
+                              await NonLoggedInGroup.sendOtpCall.call(
+                            mobile: _model.textController2.text,
+                            purpose: OtpPurpose.SIGNUP.name,
+                          );
+
+                          shouldSetState = true;
+                          if ((_model.sendOtpResponseCopy?.succeeded ?? true)) {
+                            context.pushNamed(
+                              'otp-verify',
+                              queryParameters: {
+                                'mobile': serializeParam(
+                                  _model.textController2.text,
+                                  ParamType.String,
+                                ),
+                                'purpose': serializeParam(
+                                  OtpPurpose.SIGNUP,
+                                  ParamType.Enum,
+                                ),
+                                'name': serializeParam(
+                                  _model.textController1.text,
+                                  ParamType.String,
+                                ),
+                                'referralCode': serializeParam(
+                                  _model.textController4.text,
+                                  ParamType.String,
+                                ),
+                                'walletPin': serializeParam(
+                                  _model.textController3.text,
+                                  ParamType.String,
+                                ),
+                              }.withoutNulls,
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: const TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType:
+                                      PageTransitionType.rightToLeft,
+                                ),
+                              },
+                            );
+
+                            if (shouldSetState) safeSetState(() {});
+                            return;
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  getJsonField(
+                                    (_model.sendOtpResponseCopy?.jsonBody ??
+                                        ''),
+                                    r'''$.error''',
+                                  ).toString(),
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .override(
+                                        fontFamily: 'Archivo',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                                duration: const Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                              ),
+                            );
+                            if (shouldSetState) safeSetState(() {});
+                            return;
+                          }
+
+                          if (shouldSetState) safeSetState(() {});
                         },
                         text: 'Sign Up',
                         options: FFButtonOptions(
@@ -417,21 +556,21 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               16.0, 0.0, 16.0, 0.0),
                           iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary500,
+                          color: FlutterFlowTheme.of(context).primary,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Archivo',
                                     color: Colors.white,
                                     letterSpacing: 0.0,
                                   ),
-                          elevation: 0.0,
-                          borderRadius: BorderRadius.circular(8.0),
+                          elevation: 2.0,
+                          borderRadius: BorderRadius.circular(22.0),
                         ),
                       ),
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 30.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 50.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -451,8 +590,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Inter',
-                                  color:
-                                      FlutterFlowTheme.of(context).primary500,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
                                 ),

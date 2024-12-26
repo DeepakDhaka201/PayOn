@@ -1,7 +1,9 @@
+import '/auth/custom_auth/auth_util.dart';
 import '/components/logowithname_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'splash_model.dart';
 export 'splash_model.dart';
 
@@ -21,6 +23,18 @@ class _SplashWidgetState extends State<SplashWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SplashModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 3000));
+      if (loggedIn) {
+        return;
+      }
+
+      context.pushNamed('Login');
+
+      return;
+    });
   }
 
   @override
@@ -33,10 +47,13 @@ class _SplashWidgetState extends State<SplashWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primary500,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         body: SafeArea(
           top: true,
           child: Align(
