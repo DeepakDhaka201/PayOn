@@ -103,7 +103,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               height: 100.0,
                               decoration: const BoxDecoration(),
                               child: Text(
-                                'Welcome to PayX! These Terms and Conditions of Use (\"Terms\") govern your access and use of our\napplication, PayX, including all features and services provided. By using PayX, you agree to comply with\nthese Terms. Please read them carefully.',
+                                'Welcome to PayOn! These Terms and Conditions of Use (\"Terms\") govern your access and use of our\napplication, PayOn, including all features and services provided. By using PayOn, you agree to comply with\nthese Terms. Please read them carefully.',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -139,7 +139,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               ),
                             ),
                             Text(
-                              'By registering for an account or using any PayX services, you acknowledge and agree to these Terms, as well\nas our Privacy Policy. If you do not agree, please do not use PayX.',
+                              'By registering for an account or using any PayOn services, you acknowledge and agree to these Terms, as well\nas our Privacy Policy. If you do not agree, please do not use PayOn.',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -165,7 +165,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               ),
                             ),
                             Text(
-                              'To use PayX, you must:\n• Be at least 18 years old.\n• Complete the required registration and \n   KYC verification process.\n• Comply with all applicable laws and \n   regulations in your jurisdiction.',
+                              'To use PayOn, you must:\n• Be at least 18 years old.\n• Complete the required registration and \n   KYC verification process.\n• Comply with all applicable laws and \n   regulations in your jurisdiction.',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -191,7 +191,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               ),
                             ),
                             Text(
-                              'Prohibited activities include but are not limited to:\n• Engaging in fraudulent or illegal \n   transactions.\n• Using the app for money laundering, \n   terrorist nancing, or other criminal \n   activities.\n\nPayX services are intended solely for lawful purposes, including:\n• Depositing, withdrawing, buying, and \n   selling USDT.\n• Referring users through our referral \n   program to earn commissions.\n\nAttempting to hack or disrupt PayX’s systems.',
+                              'Prohibited activities include but are not limited to:\n• Engaging in fraudulent or illegal \n   transactions.\n• Using the app for money laundering, \n   terrorist nancing, or other criminal \n   activities.\n\nPayOn services are intended solely for lawful purposes, including:\n• Depositing, withdrawing, buying, and \n   selling USDT.\n• Referring users through our referral \n   program to earn commissions.\n\nAttempting to hack or disrupt PayOn’s systems.',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -217,7 +217,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               ),
                             ),
                             Text(
-                              'Add USDT\n• Only USDT on the TRC20 network is supported.\n• Transactions must be completed within 30 minutes of initiation.\n\nBuy USDT\n• Users must deposit cash via CDM or branch within 30 minutes of claiming a payment card.\n• Failure to deposit in time will cancel the payment card.\n• A maximum of 2 cancellations is allowed per day, after which accounts are temporarily blocked for 24 hours.\n\nWithdraw USDT\n• Withdrawals may take up to 40 minutes to process.\n• Ensure wallet addresses are accurate; PayX is not responsible for errors in wallet details.\n\nSell USDT\n• INR deposits are facilitated via CDM after a successful sale transaction.',
+                              'Add USDT\n• Only USDT on the TRC20 network is supported.\n• Transactions must be completed within 30 minutes of initiation.\n\nBuy USDT\n• Users must deposit cash via CDM or branch within 30 minutes of claiming a payment card.\n• Failure to deposit in time will cancel the payment card.\n• A maximum of 2 cancellations is allowed per day, after which accounts are temporarily blocked for 24 hours.\n\nWithdraw USDT\n• Withdrawals may take up to 40 minutes to process.\n• Ensure wallet addresses are accurate; PayOn is not responsible for errors in wallet details.\n\nSell USDT\n• INR deposits are facilitated via CDM after a successful sale transaction.',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -243,7 +243,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               ),
                             ),
                             Text(
-                              'Users earn a commission of 0.1–0.5% on buy/sell transactions made by referred users.\nA minimum referral balance of 100 USDT is required for withdrawal.\nPayX reserves the right to suspend or revoke commissions for suspected abuse of the referral program.',
+                              'Users earn a commission of 0.1–0.5% on buy/sell transactions made by referred users.\nA minimum referral balance of 100 USDT is required for withdrawal.\nPayOn reserves the right to suspend or revoke commissions for suspected abuse of the referral program.',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -269,7 +269,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               ),
                             ),
                             Text(
-                              'PayX may charge fees for transactions, withdrawals, or other services. Fee details are provided in-app and may vary based on transaction type.',
+                              'PayOn may charge fees for transactions, withdrawals, or other services. Fee details are provided in-app and may vary based on transaction type.',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -321,7 +321,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               ),
                             ),
                             Text(
-                              'PayX reserves the right to suspend or terminate your account for:\n• Violating these Terms.\n• Engaging in prohibited activities.\n• Failing to comply with legal obligations.',
+                              'PayOn reserves the right to suspend or terminate your account for:\n• Violating these Terms.\n• Engaging in prohibited activities.\n• Failing to comply with legal obligations.',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
