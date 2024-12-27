@@ -79,13 +79,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const NavBarPage() : const SplashWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const NavBarPage() : const SplashWidget(),
+              appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
         ),
         FFRoute(
           name: 'Splash',
@@ -508,7 +508,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/splash';
+            return '/login';
           }
           return null;
         },
@@ -526,9 +526,9 @@ class FFRoute {
                   color: FlutterFlowTheme.of(context).primary,
                   child: Center(
                     child: Image.asset(
-                      'assets/images/Image_37_(1).png',
-                      width: 200.0,
-                      height: 200.0,
+                      'assets/images/Group_145.png',
+                      width: 300.0,
+                      height: 80.0,
                       fit: BoxFit.contain,
                     ),
                   ),

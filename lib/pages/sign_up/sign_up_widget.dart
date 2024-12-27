@@ -80,32 +80,10 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
-                                  'assets/images/Image_37_(1).png',
-                                  width: 86.0,
-                                  height: 113.0,
-                                  fit: BoxFit.fill,
-                                  alignment: const Alignment(0.0, -1.0),
-                                ),
-                              ),
-                              Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 30.0, 0.0, 0.0),
-                                  child: Text(
-                                    'PayOn\n',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .displaySmall
-                                        .override(
-                                          fontFamily: 'Archivo',
-                                          color: Colors.white,
-                                          fontSize: 36.0,
-                                          letterSpacing: 1.3,
-                                          fontWeight: FontWeight.w600,
-                                          lineHeight: 1.0,
-                                        ),
-                                  ),
+                                  'assets/images/Group_145.png',
+                                  width: 215.0,
+                                  height: 66.0,
+                                  fit: BoxFit.contain,
                                 ),
                               ),
                             ],

@@ -623,7 +623,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         .clearRedirectLocation();
 
                                     context.goNamedAuth(
-                                        'Splash', context.mounted);
+                                        'Login', context.mounted);
                                   },
                                   text: 'Logout',
                                   options: FFButtonOptions(
