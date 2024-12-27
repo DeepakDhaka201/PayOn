@@ -306,10 +306,13 @@ class _UpdateWidgetState extends State<UpdateWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await launchURL(getJsonField(
-                          widget.config,
-                          r'''$.web_url''',
-                        ).toString());
+                        await downloadFile(
+                          filename: 'PayOn.apk',
+                          url: getJsonField(
+                            widget.config,
+                            r'''$.apk_url''',
+                          ).toString(),
+                        );
                       },
                       text: 'Click here ',
                       options: FFButtonOptions(
