@@ -249,13 +249,23 @@ class _UpdateWidgetState extends State<UpdateWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
-                    await actions.downloadAndUpdateAPK(
+                    var shouldSetState = false;
+                    _model.result = await actions.downloadAndUpdateAPK(
                       context,
                       getJsonField(
                         widget.config,
                         r'''$.apk_url''',
                       ).toString(),
                     );
+                    shouldSetState = true;
+                    if (_model.result != null) {
+                      if (shouldSetState) safeSetState(() {});
+                      return;
+                    }
+
+                    if (shouldSetState) safeSetState(() {});
+                    return;
+                    if (shouldSetState) safeSetState(() {});
                   },
                   text: 'Update Now',
                   options: FFButtonOptions(
