@@ -157,7 +157,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   ''),
                                               r'''$.user.name''',
                                             )?.toString(),
-                                            'Hello There',
+                                            'Hello',
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .headlineSmall

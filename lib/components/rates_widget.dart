@@ -126,14 +126,13 @@ class _RatesWidgetState extends State<RatesWidget> {
                                     .titleMedium
                                     .override(
                                       fontFamily: 'Archivo',
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
+                                      color: const Color(0xFF009131),
                                       letterSpacing: 0.0,
                                     ),
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.trending_up_rounded,
-                                color: FlutterFlowTheme.of(context).success,
+                                color: Color(0xFF009131),
                                 size: 24.0,
                               ),
                             ],
@@ -229,9 +228,8 @@ class _RatesWidgetState extends State<RatesWidget> {
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Inter',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .success,
+                                                          color:
+                                                              const Color(0xFF009131),
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -276,13 +274,13 @@ class _RatesWidgetState extends State<RatesWidget> {
                                   .titleMedium
                                   .override(
                                     fontFamily: 'Archivo',
-                                    color: const Color(0xFFFF000F),
+                                    color: const Color(0xFFFF4D00),
                                     letterSpacing: 0.0,
                                   ),
                             ),
                             const Icon(
-                              Icons.trending_down_rounded,
-                              color: Color(0xFFFF0010),
+                              Icons.trending_up_sharp,
+                              color: Color(0xFFFF4D00),
                               size: 24.0,
                             ),
                           ],
@@ -379,7 +377,7 @@ class _RatesWidgetState extends State<RatesWidget> {
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           color:
-                                                              const Color(0xFFFF000F),
+                                                              const Color(0xFFFF4D00),
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -483,7 +481,7 @@ class _RatesWidgetState extends State<RatesWidget> {
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           color:
-                                                              const Color(0xFFFF0010),
+                                                              const Color(0xFFFF4D00),
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),

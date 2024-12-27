@@ -273,7 +273,23 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                     ),
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        context.pushNamed('WithdrawUsdt');
+                                        context.pushNamed(
+                                          'WithdrawUsdt',
+                                          queryParameters: {
+                                            'fee': serializeParam(
+                                              valueOrDefault<double>(
+                                                getJsonField(
+                                                  (_model.allRatesResp
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.w_fee''',
+                                                ),
+                                                3.0,
+                                              ),
+                                              ParamType.double,
+                                            ),
+                                          }.withoutNulls,
+                                        );
                                       },
                                       text: 'Withdraw',
                                       icon: const Icon(
@@ -1027,8 +1043,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                               .primary,
                                           size: 36.0,
                                         ),
-                                        onPressed: () async {
-                                          context.pushNamed('Notifications');
+                                        onPressed: () {
+                                          print('IconButton pressed ...');
                                         },
                                       ),
                                     ),

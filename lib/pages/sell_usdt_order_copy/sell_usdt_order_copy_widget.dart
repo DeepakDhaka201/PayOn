@@ -385,8 +385,31 @@ class _SellUsdtOrderCopyWidgetState extends State<SellUsdtOrderCopyWidget> {
                   ),
                   options: List<String>.from(_model.bankAccountIds),
                   optionLabels: _model.bankAccountLabels,
-                  onChanged: (val) =>
-                      safeSetState(() => _model.dropDownValue = val),
+                  onChanged: (val) async {
+                    safeSetState(() => _model.dropDownValue = val);
+                    if (!(_model.bankAccountIds.isNotEmpty)) {
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: const Text('No Linked Account'),
+                            content:
+                                const Text('Add an account to get started quickly!'),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: const Text('Ok'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                      return;
+                    } else {
+                      return;
+                    }
+                  },
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: 40.0,
                   textStyle: FlutterFlowTheme.of(context).bodyMedium.override(

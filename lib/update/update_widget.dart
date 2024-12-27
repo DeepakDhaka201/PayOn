@@ -52,7 +52,7 @@ class _UpdateWidgetState extends State<UpdateWidget> {
             padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
@@ -66,6 +66,7 @@ class _UpdateWidgetState extends State<UpdateWidget> {
                   style: FlutterFlowTheme.of(context).displaySmall.override(
                         fontFamily: 'Archivo',
                         color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 22.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -78,6 +79,7 @@ class _UpdateWidgetState extends State<UpdateWidget> {
                   style: FlutterFlowTheme.of(context).headlineSmall.override(
                         fontFamily: 'Archivo',
                         color: FlutterFlowTheme.of(context).primary,
+                        fontSize: 18.0,
                         letterSpacing: 0.0,
                       ),
                 ),
@@ -105,6 +107,7 @@ class _UpdateWidgetState extends State<UpdateWidget> {
                                 .headlineSmall
                                 .override(
                                   fontFamily: 'Archivo',
+                                  fontSize: 18.0,
                                   letterSpacing: 0.0,
                                 ),
                           ),
@@ -272,13 +275,53 @@ class _UpdateWidgetState extends State<UpdateWidget> {
                     borderRadius: BorderRadius.circular(28.0),
                   ),
                 ),
-                Text(
-                  'You can continue after updating to new version',
-                  style: FlutterFlowTheme.of(context).bodySmall.override(
-                        fontFamily: 'Inter',
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        letterSpacing: 0.0,
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Update not started? ',
+                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                            fontFamily: 'Inter',
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            fontSize: 12.0,
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                    FFButtonWidget(
+                      onPressed: () async {
+                        await launchURL(getJsonField(
+                          widget.config,
+                          r'''$.web_url''',
+                        ).toString());
+                      },
+                      text: 'Click here ',
+                      options: FFButtonOptions(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Archivo',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 12.0,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
+                    ),
+                    Text(
+                      'to update manually.',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Inter',
+                            fontSize: 12.0,
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  ],
                 ),
               ].divide(const SizedBox(height: 24.0)),
             ),

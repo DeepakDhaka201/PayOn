@@ -249,7 +249,7 @@ class _DepositUsdtWidgetState extends State<DepositUsdtWidget> {
                                       borderRadius: BorderRadius.circular(12.0),
                                       border: Border.all(
                                         color: FlutterFlowTheme.of(context)
-                                            .primary400,
+                                            .primary150,
                                         width: 1.0,
                                       ),
                                     ),
@@ -325,13 +325,10 @@ class _DepositUsdtWidgetState extends State<DepositUsdtWidget> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        valueOrDefault<String>(
-                                          getJsonField(
-                                            _model.getAddressResp,
-                                            r'''$.address''',
-                                          )?.toString(),
-                                          'TLeKB3ssXzRNBT4KuxyQTWpXyJMp2VfgAG',
-                                        ),
+                                        getJsonField(
+                                          _model.getAddressResp,
+                                          r'''$.address''',
+                                        ).toString(),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -339,7 +336,7 @@ class _DepositUsdtWidgetState extends State<DepositUsdtWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .netrual700,
-                                              fontSize: 13.0,
+                                              fontSize: 11.5,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -405,12 +402,12 @@ class _DepositUsdtWidgetState extends State<DepositUsdtWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           const Icon(
-                                            Icons.info_outline,
+                                            Icons.highlight_sharp,
                                             color: Color(0xFFF57C00),
                                             size: 24.0,
                                           ),
                                           Text(
-                                            'Important Notes:',
+                                            'Instructions :',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyLarge
                                                 .override(
@@ -423,14 +420,13 @@ class _DepositUsdtWidgetState extends State<DepositUsdtWidget> {
                                         ].divide(const SizedBox(width: 8.0)),
                                       ),
                                       Text(
-                                        '• Ensure the amount matches exactly\n• Deposit via CDM only & Upload clear photo\n• Deposit before time expiry.\n• Keep the receipt safe until verification',
+                                        '• Use only the TRC20 network for deposits.\n\n• Complete the transaction before the time \n   expires, or restart the process.',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
                                               color: const Color(0xFFF57C00),
                                               letterSpacing: 0.0,
-                                              lineHeight: 2.0,
                                             ),
                                       ),
                                     ].divide(const SizedBox(height: 8.0)),

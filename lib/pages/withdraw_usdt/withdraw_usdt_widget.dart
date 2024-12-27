@@ -12,7 +12,12 @@ import 'withdraw_usdt_model.dart';
 export 'withdraw_usdt_model.dart';
 
 class WithdrawUsdtWidget extends StatefulWidget {
-  const WithdrawUsdtWidget({super.key});
+  const WithdrawUsdtWidget({
+    super.key,
+    double? fee,
+  }) : fee = fee ?? 3.0;
+
+  final double fee;
 
   @override
   State<WithdrawUsdtWidget> createState() => _WithdrawUsdtWidgetState();
@@ -337,7 +342,7 @@ class _WithdrawUsdtWidgetState extends State<WithdrawUsdtWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
                       child: Text(
-                        '5 USDT',
+                        '${widget.fee.toString()}USDT',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Inter',
                               color: FlutterFlowTheme.of(context).netrual900,
@@ -367,7 +372,7 @@ class _WithdrawUsdtWidgetState extends State<WithdrawUsdtWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 0.0, 40.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 0.0, 20.0),
                   child: TextFormField(
                     controller: _model.textController2,
                     focusNode: _model.textFieldFocusNode,
@@ -437,12 +442,57 @@ class _WithdrawUsdtWidgetState extends State<WithdrawUsdtWidget> {
                     ],
                   ),
                 ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Need INR? ',
+                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                            fontFamily: 'Inter',
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            fontSize: 14.0,
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                    FFButtonWidget(
+                      onPressed: () async {
+                        context.pushNamed('SellUsdt');
+                      },
+                      text: 'Click here ',
+                      options: FFButtonOptions(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Archivo',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 14.0,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    Text(
+                      'to Sell',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Inter',
+                            fontSize: 14.0,
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  ],
+                ),
                 Divider(
                   thickness: 2.0,
                   color: FlutterFlowTheme.of(context).alternate,
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: BoxDecoration(
@@ -454,39 +504,63 @@ class _WithdrawUsdtWidgetState extends State<WithdrawUsdtWidget> {
                           16.0, 16.0, 16.0, 16.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              const Icon(
-                                Icons.info_outline,
-                                color: Color(0xFFF57C00),
-                                size: 24.0,
-                              ),
-                              Text(
-                                'Important Notes:',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .override(
-                                      fontFamily: 'Inter',
-                                      color: const Color(0xFFF57C00),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                            ].divide(const SizedBox(width: 8.0)),
-                          ),
-                          Text(
-                            '• Ensure the amount matches exactly\n• Deposit via CDM only & Upload clear photo\n• Deposit before time expiry.\n• Keep the receipt safe until verification',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Inter',
-                                  color: const Color(0xFFF57C00),
-                                  letterSpacing: 0.0,
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 5.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                const Icon(
+                                  Icons.highlight_sharp,
+                                  color: Color(0xFFF57C00),
+                                  size: 24.0,
                                 ),
+                                Text(
+                                  'Instructions:',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: const Color(0xFFF57C00),
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                              ].divide(const SizedBox(width: 8.0)),
+                            ),
                           ),
-                        ].divide(const SizedBox(height: 8.0)),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                7.0, 0.0, 0.0, 0.0),
+                            child: Text(
+                              '• Withdrawals may take up to 60 minutes \n   to process',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    color: const Color(0xFFF57C00),
+                                    letterSpacing: 0.0,
+                                    lineHeight: 1.0,
+                                  ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                7.0, 0.0, 0.0, 0.0),
+                            child: Text(
+                              '• All withdrawals are handled with 100%\n   secure payment methods.',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    color: const Color(0xFFF57C00),
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          ),
+                        ].divide(const SizedBox(height: 12.0)),
                       ),
                     ),
                   ),

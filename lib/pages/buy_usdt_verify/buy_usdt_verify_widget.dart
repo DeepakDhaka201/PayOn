@@ -527,30 +527,77 @@ class _BuyUsdtVerifyWidgetState extends State<BuyUsdtVerifyWidget>
                             16.0, 16.0, 16.0, 16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                const Icon(
-                                  Icons.info_outline,
-                                  color: Color(0xFFF57C00),
-                                  size: 24.0,
-                                ),
-                                Text(
-                                  'Important Notes:',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyLarge
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        color: const Color(0xFFF57C00),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                ),
-                              ].divide(const SizedBox(width: 8.0)),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 10.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(
+                                    Icons.highlight_sharp,
+                                    color: Color(0xFFF57C00),
+                                    size: 24.0,
+                                  ),
+                                  Text(
+                                    'Important Instructions:',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          color: const Color(0xFFF57C00),
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
+                                ].divide(const SizedBox(width: 8.0)),
+                              ),
                             ),
                             Text(
-                              '• Ensure the amount matches exactly\n• Deposit via CDM only & Upload clear photo\n• Deposit before time expiry.\n• Keep the receipt safe until verification',
+                              '• Deposit cash in a CDM to purchase \n   USDT.',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    color: const Color(0xFFF57C00),
+                                    letterSpacing: 0.0,
+                                    lineHeight: 1.2,
+                                  ),
+                            ),
+                            Text(
+                              '• Complete the deposit before the time \n   expires',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    color: const Color(0xFFF57C00),
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                            Text(
+                              '• Incomplete or canceled claims will fail.   \n   Users get 2 failed claims daily; exceeding \n   this blocks the account for 24 hours.',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    color: const Color(0xFFF57C00),
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                            Text(
+                              '• Enter the Reference Number and upload \n   a photo of the receipt after the deposit.',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    color: const Color(0xFFF57C00),
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                            Text(
+                              '• Keep the receipt safe until verification',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(

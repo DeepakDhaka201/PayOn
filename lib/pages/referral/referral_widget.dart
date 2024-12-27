@@ -237,7 +237,7 @@ class _ReferralWidgetState extends State<ReferralWidget>
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       child: Text(
-                                        'Your Referral Link',
+                                        'Your Referral Code',
                                         style: FlutterFlowTheme.of(context)
                                             .titleMedium
                                             .override(
@@ -264,7 +264,7 @@ class _ReferralWidgetState extends State<ReferralWidget>
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                                MainAxisAlignment.spaceAround,
                                             children: [
                                               Text(
                                                 valueOrDefault<String>(
@@ -283,7 +283,8 @@ class _ReferralWidgetState extends State<ReferralWidget>
                                                           fontFamily: 'Inter',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryText,
+                                                              .tertiary,
+                                                          fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),

@@ -754,7 +754,7 @@ class _BuyUsdtV2WidgetState extends State<BuyUsdtV2Widget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     5.0, 35.0, 0.0, 0.0),
                                 child: Text(
-                                  'Select Payment Method :',
+                                  'Choose Your Payment Method :',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -912,17 +912,13 @@ class _BuyUsdtV2WidgetState extends State<BuyUsdtV2Widget> {
                                                       .override(
                                                         fontFamily: 'Archivo',
                                                         color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .success,
+                                                            const Color(0xFF009131),
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
-                                                Icon(
+                                                const Icon(
                                                   Icons.trending_up_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .success,
+                                                  color: Color(0xFF009131),
                                                   size: 24.0,
                                                 ),
                                               ],
@@ -1045,9 +1041,8 @@ class _BuyUsdtV2WidgetState extends State<BuyUsdtV2Widget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Inter',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .success,
+                                                                      color: const Color(
+                                                                          0xFF009131),
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),

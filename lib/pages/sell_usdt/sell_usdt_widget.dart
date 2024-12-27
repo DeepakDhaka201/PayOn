@@ -729,7 +729,7 @@ class _SellUsdtWidgetState extends State<SellUsdtWidget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     5.0, 35.0, 0.0, 0.0),
                                 child: Text(
-                                  'Select Payment Method :',
+                                  'Receive Payment Method :',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -896,13 +896,13 @@ class _SellUsdtWidgetState extends State<SellUsdtWidget> {
                                                         .override(
                                                           fontFamily: 'Archivo',
                                                           color:
-                                                              const Color(0xFFFF000C),
+                                                              const Color(0xFFFF4D00),
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
                                               const Icon(
-                                                Icons.trending_down_rounded,
-                                                color: Color(0xFFFF0010),
+                                                Icons.trending_up,
+                                                color: Color(0xFFFF4D00),
                                                 size: 24.0,
                                               ),
                                             ],
@@ -1030,7 +1030,7 @@ class _SellUsdtWidgetState extends State<SellUsdtWidget> {
                                                                       fontFamily:
                                                                           'Inter',
                                                                       color: const Color(
-                                                                          0xFFFF000F),
+                                                                          0xFFFF4D00),
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -1166,7 +1166,7 @@ class _SellUsdtWidgetState extends State<SellUsdtWidget> {
                                                                       fontFamily:
                                                                           'Inter',
                                                                       color: const Color(
-                                                                          0xFFFF000F),
+                                                                          0xFFFF4D00),
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),

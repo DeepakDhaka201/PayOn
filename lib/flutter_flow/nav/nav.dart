@@ -236,7 +236,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'WithdrawUsdt',
           path: '/withdrawUsdt',
-          builder: (context, params) => const WithdrawUsdtWidget(),
+          builder: (context, params) => WithdrawUsdtWidget(
+            fee: params.getParam(
+              'fee',
+              ParamType.double,
+            ),
+          ),
         ),
         FFRoute(
           name: 'WithdrawStatus',
