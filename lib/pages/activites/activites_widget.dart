@@ -589,156 +589,105 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 15.0),
-                                                child: Container(
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          1.0,
-                                                  height: 76.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .netural100,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                    border: Border.all(
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    context.pushNamed(
+                                                      'TransactionDetail',
+                                                      queryParameters: {
+                                                        'transaction':
+                                                            serializeParam(
+                                                          sellTransactionsItem,
+                                                          ParamType.JSON,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  child: Container(
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        1.0,
+                                                    height: 76.0,
+                                                    decoration: BoxDecoration(
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .netrual400,
-                                                      width: 1.0,
+                                                              .netural100,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                      border: Border.all(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .netrual400,
+                                                        width: 1.0,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 1.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceEvenly,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10.0,
-                                                                      0.0,
-                                                                      10.0,
-                                                                      0.0),
-                                                          child:
-                                                              FlutterFlowIconButton(
-                                                            borderColor:
-                                                                FlutterFlowTheme.of(
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  1.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        10.0,
+                                                                        0.0),
+                                                            child:
+                                                                FlutterFlowIconButton(
+                                                              borderColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .netrual900,
+                                                              borderRadius:
+                                                                  50.0,
+                                                              buttonSize: 30.0,
+                                                              fillColor: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              icon: Icon(
+                                                                Icons
+                                                                    .account_balance_wallet_rounded,
+                                                                color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .netrual900,
-                                                            borderRadius: 50.0,
-                                                            buttonSize: 30.0,
-                                                            fillColor: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            icon: Icon(
-                                                              Icons.south_east,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .netrual900,
-                                                              size: 15.0,
+                                                                size: 15.0,
+                                                              ),
+                                                              onPressed: () {
+                                                                print(
+                                                                    'IconButton pressed ...');
+                                                              },
                                                             ),
-                                                            onPressed: () {
-                                                              print(
-                                                                  'IconButton pressed ...');
-                                                            },
                                                           ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      10.0,
-                                                                      0.0,
-                                                                      10.0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceEvenly,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                getJsonField(
-                                                                  sellTransactionsItem,
-                                                                  r'''$.title.text''',
-                                                                ).toString(),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Inter',
-                                                                      color:
-                                                                          colorFromCssString(
-                                                                        getJsonField(
-                                                                          sellTransactionsItem,
-                                                                          r'''$.title.color''',
-                                                                        ).toString(),
-                                                                        defaultColor:
-                                                                            Colors.black,
-                                                                      ),
-                                                                      fontSize:
-                                                                          15.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                    ),
-                                                              ),
-                                                              Text(
-                                                                '${getJsonField(
-                                                                  sellTransactionsItem,
-                                                                  r'''$.rupal_id''',
-                                                                ).toString()} • ${getJsonField(
-                                                                  sellTransactionsItem,
-                                                                  r'''$.created_at''',
-                                                                ).toString()}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Inter',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .netrual500,
-                                                                      fontSize:
-                                                                          12.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .normal,
-                                                                    ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Expanded(
-                                                          child: Padding(
+                                                          Padding(
                                                             padding:
                                                                 const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         10.0,
-                                                                        10.0,
+                                                                        0.0,
                                                                         10.0),
                                                             child: Column(
                                                               mainAxisSize:
@@ -749,12 +698,12 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                                                       .spaceEvenly,
                                                               crossAxisAlignment:
                                                                   CrossAxisAlignment
-                                                                      .end,
+                                                                      .start,
                                                               children: [
                                                                 Text(
                                                                   getJsonField(
                                                                     sellTransactionsItem,
-                                                                    r'''$.amount_display''',
+                                                                    r'''$.title.text''',
                                                                   ).toString(),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
@@ -780,36 +729,112 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                                                       ),
                                                                 ),
                                                                 Text(
-                                                                  getJsonField(
+                                                                  '${getJsonField(
                                                                     sellTransactionsItem,
-                                                                    r'''$.display_status.text''',
-                                                                  ).toString(),
+                                                                    r'''$.rupal_id''',
+                                                                  ).toString()} • ${getJsonField(
+                                                                    sellTransactionsItem,
+                                                                    r'''$.created_at''',
+                                                                  ).toString()}',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color:
-                                                                            colorFromCssString(
-                                                                          getJsonField(
-                                                                            sellTransactionsItem,
-                                                                            r'''$.display_status.color''',
-                                                                          ).toString(),
-                                                                          defaultColor:
-                                                                              Colors.black,
-                                                                        ),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .netrual500,
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
                                                                       ),
                                                                 ),
                                                               ],
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          10.0,
+                                                                          10.0,
+                                                                          10.0),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceEvenly,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .end,
+                                                                children: [
+                                                                  Text(
+                                                                    getJsonField(
+                                                                      sellTransactionsItem,
+                                                                      r'''$.amount_display''',
+                                                                    ).toString(),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          color:
+                                                                              colorFromCssString(
+                                                                            getJsonField(
+                                                                              sellTransactionsItem,
+                                                                              r'''$.title.color''',
+                                                                            ).toString(),
+                                                                            defaultColor:
+                                                                                Colors.black,
+                                                                          ),
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                  ),
+                                                                  Text(
+                                                                    getJsonField(
+                                                                      sellTransactionsItem,
+                                                                      r'''$.display_status.text''',
+                                                                    ).toString(),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Inter',
+                                                                          color:
+                                                                              colorFromCssString(
+                                                                            getJsonField(
+                                                                              sellTransactionsItem,
+                                                                              r'''$.display_status.color''',
+                                                                            ).toString(),
+                                                                            defaultColor:
+                                                                                Colors.black,
+                                                                          ),
+                                                                          fontSize:
+                                                                              12.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -870,147 +895,97 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 0.0, 15.0),
-                                              child: Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                height: 76.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .netural100,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
-                                                  border: Border.all(
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  context.pushNamed(
+                                                    'TransactionDetail',
+                                                    queryParameters: {
+                                                      'transaction':
+                                                          serializeParam(
+                                                        depositTransactionsItem,
+                                                        ParamType.JSON,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                child: Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          1.0,
+                                                  height: 76.0,
+                                                  decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .netrual400,
-                                                    width: 1.0,
+                                                        .netural100,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                    border: Border.all(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .netrual400,
+                                                      width: 1.0,
+                                                    ),
                                                   ),
-                                                ),
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 1.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceEvenly,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0),
-                                                        child:
-                                                            FlutterFlowIconButton(
-                                                          borderColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .netrual900,
-                                                          borderRadius: 50.0,
-                                                          buttonSize: 30.0,
-                                                          fillColor: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          icon: Icon(
-                                                            Icons.south_east,
-                                                            color: FlutterFlowTheme
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 1.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0),
+                                                          child:
+                                                              FlutterFlowIconButton(
+                                                            borderColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .netrual900,
+                                                            borderRadius: 50.0,
+                                                            buttonSize: 30.0,
+                                                            fillColor: FlutterFlowTheme
                                                                     .of(context)
-                                                                .netrual900,
-                                                            size: 15.0,
+                                                                .secondaryBackground,
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .account_balance_wallet_rounded,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .netrual900,
+                                                              size: 15.0,
+                                                            ),
+                                                            onPressed: () {
+                                                              print(
+                                                                  'IconButton pressed ...');
+                                                            },
                                                           ),
-                                                          onPressed: () {
-                                                            print(
-                                                                'IconButton pressed ...');
-                                                          },
                                                         ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0,
-                                                                    10.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              getJsonField(
-                                                                depositTransactionsItem,
-                                                                r'''$.title.text''',
-                                                              ).toString(),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Inter',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .netrual900,
-                                                                    fontSize:
-                                                                        15.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                  ),
-                                                            ),
-                                                            Text(
-                                                              '${getJsonField(
-                                                                depositTransactionsItem,
-                                                                r'''$.rupal_id''',
-                                                              ).toString()} • ${getJsonField(
-                                                                depositTransactionsItem,
-                                                                r'''$.created_at''',
-                                                              ).toString()}',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Inter',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .netrual500,
-                                                                    fontSize:
-                                                                        12.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                  ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: Padding(
+                                                        Padding(
                                                           padding:
                                                               const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       10.0,
-                                                                      10.0,
+                                                                      0.0,
                                                                       10.0),
                                                           child: Column(
                                                             mainAxisSize:
@@ -1021,12 +996,12 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                                                     .spaceEvenly,
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
-                                                                    .end,
+                                                                    .start,
                                                             children: [
                                                               Text(
                                                                 getJsonField(
                                                                   depositTransactionsItem,
-                                                                  r'''$.amount_display''',
+                                                                  r'''$.title.text''',
                                                                 ).toString(),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -1034,15 +1009,9 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Inter',
-                                                                      color:
-                                                                          colorFromCssString(
-                                                                        getJsonField(
-                                                                          depositTransactionsItem,
-                                                                          r'''$.title.color''',
-                                                                        ).toString(),
-                                                                        defaultColor:
-                                                                            Colors.black,
-                                                                      ),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .netrual900,
                                                                       fontSize:
                                                                           15.0,
                                                                       letterSpacing:
@@ -1053,36 +1022,114 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                                                     ),
                                                               ),
                                                               Text(
-                                                                getJsonField(
+                                                                '${getJsonField(
                                                                   depositTransactionsItem,
-                                                                  r'''$.display_status.text''',
-                                                                ).toString(),
+                                                                  r'''$.rupal_id''',
+                                                                ).toString()} • ${getJsonField(
+                                                                  depositTransactionsItem,
+                                                                  r'''$.created_at''',
+                                                                ).toString()}',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Inter',
-                                                                      color:
-                                                                          colorFromCssString(
-                                                                        getJsonField(
-                                                                          depositTransactionsItem,
-                                                                          r'''$.display_status.color''',
-                                                                        ).toString(),
-                                                                        defaultColor:
-                                                                            Colors.black,
-                                                                      ),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .netrual500,
                                                                       fontSize:
                                                                           12.0,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
                                                                     ),
                                                               ),
                                                             ],
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceEvenly,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .end,
+                                                              children: [
+                                                                Text(
+                                                                  getJsonField(
+                                                                    depositTransactionsItem,
+                                                                    r'''$.amount_display''',
+                                                                  ).toString(),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Inter',
+                                                                        color:
+                                                                            colorFromCssString(
+                                                                          getJsonField(
+                                                                            depositTransactionsItem,
+                                                                            r'''$.title.color''',
+                                                                          ).toString(),
+                                                                          defaultColor:
+                                                                              Colors.black,
+                                                                        ),
+                                                                        fontSize:
+                                                                            15.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                      ),
+                                                                ),
+                                                                Text(
+                                                                  getJsonField(
+                                                                    depositTransactionsItem,
+                                                                    r'''$.display_status.text''',
+                                                                  ).toString(),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Inter',
+                                                                        color:
+                                                                            colorFromCssString(
+                                                                          getJsonField(
+                                                                            depositTransactionsItem,
+                                                                            r'''$.display_status.color''',
+                                                                          ).toString(),
+                                                                          defaultColor:
+                                                                              Colors.black,
+                                                                        ),
+                                                                        fontSize:
+                                                                            12.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -1142,147 +1189,97 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 0.0, 15.0),
-                                              child: Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                height: 76.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .netural100,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
-                                                  border: Border.all(
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  context.pushNamed(
+                                                    'TransactionDetail',
+                                                    queryParameters: {
+                                                      'transaction':
+                                                          serializeParam(
+                                                        withdrawTransactionsItem,
+                                                        ParamType.JSON,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                child: Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          1.0,
+                                                  height: 76.0,
+                                                  decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .netrual400,
-                                                    width: 1.0,
+                                                        .netural100,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                    border: Border.all(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .netrual400,
+                                                      width: 1.0,
+                                                    ),
                                                   ),
-                                                ),
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 1.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceEvenly,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0),
-                                                        child:
-                                                            FlutterFlowIconButton(
-                                                          borderColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .netrual900,
-                                                          borderRadius: 50.0,
-                                                          buttonSize: 30.0,
-                                                          fillColor: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          icon: Icon(
-                                                            Icons.south_east,
-                                                            color: FlutterFlowTheme
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 1.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0),
+                                                          child:
+                                                              FlutterFlowIconButton(
+                                                            borderColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .netrual900,
+                                                            borderRadius: 50.0,
+                                                            buttonSize: 30.0,
+                                                            fillColor: FlutterFlowTheme
                                                                     .of(context)
-                                                                .netrual900,
-                                                            size: 15.0,
+                                                                .secondaryBackground,
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .account_balance_wallet_rounded,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .netrual900,
+                                                              size: 15.0,
+                                                            ),
+                                                            onPressed: () {
+                                                              print(
+                                                                  'IconButton pressed ...');
+                                                            },
                                                           ),
-                                                          onPressed: () {
-                                                            print(
-                                                                'IconButton pressed ...');
-                                                          },
                                                         ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0,
-                                                                    10.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              getJsonField(
-                                                                withdrawTransactionsItem,
-                                                                r'''$.title.text''',
-                                                              ).toString(),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Inter',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .netrual900,
-                                                                    fontSize:
-                                                                        15.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                  ),
-                                                            ),
-                                                            Text(
-                                                              '${getJsonField(
-                                                                withdrawTransactionsItem,
-                                                                r'''$.rupal_id''',
-                                                              ).toString()} • ${getJsonField(
-                                                                withdrawTransactionsItem,
-                                                                r'''$.created_at''',
-                                                              ).toString()}',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Inter',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .netrual500,
-                                                                    fontSize:
-                                                                        12.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                  ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: Padding(
+                                                        Padding(
                                                           padding:
                                                               const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       10.0,
-                                                                      10.0,
+                                                                      0.0,
                                                                       10.0),
                                                           child: Column(
                                                             mainAxisSize:
@@ -1293,12 +1290,12 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                                                     .spaceEvenly,
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
-                                                                    .end,
+                                                                    .start,
                                                             children: [
                                                               Text(
                                                                 getJsonField(
                                                                   withdrawTransactionsItem,
-                                                                  r'''$.amount_display''',
+                                                                  r'''$.title.text''',
                                                                 ).toString(),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -1306,15 +1303,9 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Inter',
-                                                                      color:
-                                                                          colorFromCssString(
-                                                                        getJsonField(
-                                                                          withdrawTransactionsItem,
-                                                                          r'''$.title.color''',
-                                                                        ).toString(),
-                                                                        defaultColor:
-                                                                            Colors.black,
-                                                                      ),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .netrual900,
                                                                       fontSize:
                                                                           15.0,
                                                                       letterSpacing:
@@ -1325,36 +1316,114 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                                                     ),
                                                               ),
                                                               Text(
-                                                                getJsonField(
+                                                                '${getJsonField(
                                                                   withdrawTransactionsItem,
-                                                                  r'''$.display_status.text''',
-                                                                ).toString(),
+                                                                  r'''$.rupal_id''',
+                                                                ).toString()} • ${getJsonField(
+                                                                  withdrawTransactionsItem,
+                                                                  r'''$.created_at''',
+                                                                ).toString()}',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Inter',
-                                                                      color:
-                                                                          colorFromCssString(
-                                                                        getJsonField(
-                                                                          withdrawTransactionsItem,
-                                                                          r'''$.display_status.color''',
-                                                                        ).toString(),
-                                                                        defaultColor:
-                                                                            Colors.black,
-                                                                      ),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .netrual500,
                                                                       fontSize:
                                                                           12.0,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
                                                                     ),
                                                               ),
                                                             ],
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceEvenly,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .end,
+                                                              children: [
+                                                                Text(
+                                                                  getJsonField(
+                                                                    withdrawTransactionsItem,
+                                                                    r'''$.amount_display''',
+                                                                  ).toString(),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Inter',
+                                                                        color:
+                                                                            colorFromCssString(
+                                                                          getJsonField(
+                                                                            withdrawTransactionsItem,
+                                                                            r'''$.title.color''',
+                                                                          ).toString(),
+                                                                          defaultColor:
+                                                                              Colors.black,
+                                                                        ),
+                                                                        fontSize:
+                                                                            15.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                      ),
+                                                                ),
+                                                                Text(
+                                                                  getJsonField(
+                                                                    withdrawTransactionsItem,
+                                                                    r'''$.display_status.text''',
+                                                                  ).toString(),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Inter',
+                                                                        color:
+                                                                            colorFromCssString(
+                                                                          getJsonField(
+                                                                            withdrawTransactionsItem,
+                                                                            r'''$.display_status.color''',
+                                                                          ).toString(),
+                                                                          defaultColor:
+                                                                              Colors.black,
+                                                                        ),
+                                                                        fontSize:
+                                                                            12.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),
