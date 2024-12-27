@@ -365,7 +365,7 @@ class _BuyClaimOptionsWidgetState extends State<BuyClaimOptionsWidget>
                                                 safeSetState(() {});
                                               },
                                             ),
-                                            autofocus: true,
+                                            autofocus: false,
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               isDense: true,
