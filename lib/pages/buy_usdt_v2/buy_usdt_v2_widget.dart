@@ -312,6 +312,9 @@ class _BuyUsdtV2WidgetState extends State<BuyUsdtV2Widget> {
                                                                           .convertedRespCoppy,
                                                                       r'''$.rate''',
                                                                     );
+                                                                    _model.payMode = _model
+                                                                        .allModes
+                                                                        .firstOrNull!;
                                                                     safeSetState(
                                                                         () {});
                                                                     if (shouldSetState) {
