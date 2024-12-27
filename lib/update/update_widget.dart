@@ -248,25 +248,31 @@ class _UpdateWidgetState extends State<UpdateWidget> {
                   ),
                 ),
                 FFButtonWidget(
-                  onPressed: () async {
-                    var shouldSetState = false;
-                    _model.result = await actions.downloadAndUpdateAPK(
-                      context,
-                      getJsonField(
-                        widget.config,
-                        r'''$.apk_url''',
-                      ).toString(),
-                    );
-                    shouldSetState = true;
-                    if (_model.result != null) {
-                      if (shouldSetState) safeSetState(() {});
-                      return;
-                    }
+                  onPressed: _model.loader
+                      ? null
+                      : () async {
+                          var shouldSetState = false;
+                          _model.loader = true;
+                          safeSetState(() {});
+                          _model.result = await actions.downloadAndUpdateAPK(
+                            context,
+                            getJsonField(
+                              widget.config,
+                              r'''$.apk_url''',
+                            ).toString(),
+                          );
+                          shouldSetState = true;
+                          _model.loader = false;
+                          safeSetState(() {});
+                          if (_model.result != null) {
+                            if (shouldSetState) safeSetState(() {});
+                            return;
+                          }
 
-                    if (shouldSetState) safeSetState(() {});
-                    return;
-                    if (shouldSetState) safeSetState(() {});
-                  },
+                          if (shouldSetState) safeSetState(() {});
+                          return;
+                          if (shouldSetState) safeSetState(() {});
+                        },
                   text: 'Update Now',
                   options: FFButtonOptions(
                     width: MediaQuery.sizeOf(context).width * 1.0,
