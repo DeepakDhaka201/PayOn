@@ -310,6 +310,8 @@ class _SupportWidgetState extends State<SupportWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

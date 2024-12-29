@@ -21,6 +21,8 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TermsConditionsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

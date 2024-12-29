@@ -35,6 +35,8 @@ class _SplashWidgetState extends State<SplashWidget> {
 
       return;
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

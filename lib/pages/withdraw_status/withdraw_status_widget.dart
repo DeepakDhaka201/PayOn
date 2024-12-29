@@ -26,6 +26,8 @@ class _WithdrawStatusWidgetState extends State<WithdrawStatusWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => WithdrawStatusModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

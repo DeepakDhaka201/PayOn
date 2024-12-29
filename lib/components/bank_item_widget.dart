@@ -34,6 +34,7 @@ class _BankItemWidgetState extends State<BankItemWidget> {
       widget.bankItem,
       r'''$.is_active''',
     );
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

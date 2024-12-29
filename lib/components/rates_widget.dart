@@ -29,6 +29,8 @@ class _RatesWidgetState extends State<RatesWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => RatesModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

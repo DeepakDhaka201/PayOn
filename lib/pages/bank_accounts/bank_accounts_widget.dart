@@ -27,6 +27,8 @@ class _BankAccountsWidgetState extends State<BankAccountsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BankAccountsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

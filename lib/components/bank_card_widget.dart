@@ -26,6 +26,7 @@ class _BankCardWidgetState extends State<BankCardWidget> {
     _model = createModel(context, () => BankCardModel());
 
     _model.switchValue = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

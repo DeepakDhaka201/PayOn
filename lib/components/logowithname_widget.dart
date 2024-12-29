@@ -24,6 +24,8 @@ class _LogowithnameWidgetState extends State<LogowithnameWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LogowithnameModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

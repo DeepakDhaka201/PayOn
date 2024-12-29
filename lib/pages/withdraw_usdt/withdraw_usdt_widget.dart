@@ -38,6 +38,8 @@ class _WithdrawUsdtWidgetState extends State<WithdrawUsdtWidget> {
 
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

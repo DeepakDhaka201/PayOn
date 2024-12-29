@@ -28,6 +28,8 @@ class _WalletPinWidgetState extends State<WalletPinWidget> {
 
     _model.walletPinTextTextController ??= TextEditingController();
     _model.walletPinTextFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

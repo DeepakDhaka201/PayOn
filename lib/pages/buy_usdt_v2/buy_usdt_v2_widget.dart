@@ -78,6 +78,8 @@ class _BuyUsdtV2WidgetState extends State<BuyUsdtV2Widget> {
 
     _model.amountUsdtTextController ??= TextEditingController();
     _model.amountUsdtFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -73,6 +73,8 @@ class _SellUsdtWidgetState extends State<SellUsdtWidget> {
 
     _model.amountUsdtTextController ??= TextEditingController();
     _model.amountUsdtFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

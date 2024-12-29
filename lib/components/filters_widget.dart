@@ -37,6 +37,8 @@ class _FiltersWidgetState extends State<FiltersWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FiltersModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

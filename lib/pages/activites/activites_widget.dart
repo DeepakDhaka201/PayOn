@@ -33,6 +33,7 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
       length: 4,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -161,7 +162,7 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                     children: [
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 30.0, 10.0, 100.0),
+                                            10.0, 20.0, 10.0, 100.0),
                                         child: RefreshIndicator(
                                           onRefresh: () async {
                                             safeSetState(() => _model
@@ -467,7 +468,7 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                       ),
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 30.0, 10.0, 0.0),
+                                            10.0, 20.0, 10.0, 0.0),
                                         child: RefreshIndicator(
                                           onRefresh: () async {
                                             safeSetState(() => _model
@@ -780,7 +781,7 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                       ),
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 30.0, 10.0, 0.0),
+                                            10.0, 20.0, 10.0, 0.0),
                                         child: PagedListView<ApiPagingParams,
                                             dynamic>(
                                           pagingController:
@@ -1080,7 +1081,7 @@ class _ActivitesWidgetState extends State<ActivitesWidget>
                                       ),
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 30.0, 10.0, 0.0),
+                                            10.0, 20.0, 10.0, 0.0),
                                         child: PagedListView<ApiPagingParams,
                                             dynamic>(
                                           pagingController:

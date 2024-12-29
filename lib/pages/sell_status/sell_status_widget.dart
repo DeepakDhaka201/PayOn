@@ -26,6 +26,8 @@ class _SellStatusWidgetState extends State<SellStatusWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SellStatusModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -29,6 +29,8 @@ class _DepositStatusWidgetState extends State<DepositStatusWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DepositStatusModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

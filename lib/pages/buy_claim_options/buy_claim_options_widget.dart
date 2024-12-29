@@ -208,6 +208,8 @@ class _BuyClaimOptionsWidgetState extends State<BuyClaimOptionsWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -265,7 +267,7 @@ class _BuyClaimOptionsWidgetState extends State<BuyClaimOptionsWidget>
               Opacity(
                 opacity: _model.showLoader ? 0.3 : 1.0,
                 child: Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, -1.0),
                   child: Padding(
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 24.0),

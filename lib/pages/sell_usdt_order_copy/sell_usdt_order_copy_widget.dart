@@ -87,6 +87,8 @@ class _SellUsdtOrderCopyWidgetState extends State<SellUsdtOrderCopyWidget> {
         return;
       }
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

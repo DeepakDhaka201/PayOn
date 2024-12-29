@@ -41,6 +41,8 @@ class _AccountSaveWidgetState extends State<AccountSaveWidget> {
 
     _model.textController4 ??= TextEditingController();
     _model.textFieldFocusNode4 ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -80,7 +82,7 @@ class _AccountSaveWidgetState extends State<AccountSaveWidget> {
                           child: TextFormField(
                             controller: _model.textController1,
                             focusNode: _model.textFieldFocusNode1,
-                            autofocus: false,
+                            autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
                               isDense: true,
@@ -164,7 +166,7 @@ class _AccountSaveWidgetState extends State<AccountSaveWidget> {
                           child: TextFormField(
                             controller: _model.textController2,
                             focusNode: _model.textFieldFocusNode2,
-                            autofocus: false,
+                            autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
                               isDense: true,
@@ -248,7 +250,7 @@ class _AccountSaveWidgetState extends State<AccountSaveWidget> {
                           child: TextFormField(
                             controller: _model.textController3,
                             focusNode: _model.textFieldFocusNode3,
-                            autofocus: false,
+                            autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
                               isDense: true,
@@ -317,6 +319,7 @@ class _AccountSaveWidgetState extends State<AccountSaveWidget> {
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                 ),
+                            keyboardType: TextInputType.number,
                             cursorColor:
                                 FlutterFlowTheme.of(context).primaryText,
                             validator: _model.textController3Validator
@@ -334,7 +337,7 @@ class _AccountSaveWidgetState extends State<AccountSaveWidget> {
                             child: TextFormField(
                               controller: _model.textController4,
                               focusNode: _model.textFieldFocusNode4,
-                              autofocus: false,
+                              autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
                                 isDense: true,

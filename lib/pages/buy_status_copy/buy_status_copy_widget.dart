@@ -26,6 +26,8 @@ class _BuyStatusCopyWidgetState extends State<BuyStatusCopyWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BuyStatusCopyModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
