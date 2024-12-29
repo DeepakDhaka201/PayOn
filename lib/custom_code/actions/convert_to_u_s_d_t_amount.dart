@@ -16,15 +16,14 @@ Future<dynamic> convertToUSDTAmount(
   dynamic rates,
 ) async {
   try {
-    // Initialize default values
     double usdtAmount = 0.0;
     double selectedRate = 0.0;
 
-    // Early return if rates is null
     if (rates == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Rates data is not available'),
+          content:
+              Text('Unable to fetch current rates. Please try again later.'),
           duration: Duration(seconds: 3),
         ),
       );
@@ -34,12 +33,12 @@ Future<dynamic> convertToUSDTAmount(
       };
     }
 
-    // Safely handle the rates map
     final Map<String, dynamic> ratesMap = Map<String, dynamic>.from(rates);
     if (!ratesMap.containsKey(paymentMode)) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('No rates found for payment mode: $paymentMode'),
+          content: Text(
+              '$paymentMode rates are currently unavailable. Please try a different payment method.'),
           duration: const Duration(seconds: 3),
         ),
       );
@@ -49,12 +48,12 @@ Future<dynamic> convertToUSDTAmount(
       };
     }
 
-    // Safely handle the rate list
     final dynamic rateListDynamic = ratesMap[paymentMode];
     if (rateListDynamic is! List) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Invalid rate data format'),
+          content: Text(
+              'Rate information is incorrectly formatted. Please contact support.'),
           duration: Duration(seconds: 3),
         ),
       );
@@ -68,7 +67,8 @@ Future<dynamic> convertToUSDTAmount(
     if (rateList.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('No rate ranges defined'),
+          content: Text(
+              'No rate slabs are currently available. Please try again later.'),
           duration: Duration(seconds: 3),
         ),
       );
@@ -76,6 +76,44 @@ Future<dynamic> convertToUSDTAmount(
         'usdtAmount': 0.00,
         'rate': 0.00,
       };
+    }
+
+    // Check minimum amount (first slab)
+    var firstSlab = rateList.first;
+    if (firstSlab is Map) {
+      double minAmount = (firstSlab['min_amount'] ?? 0.0).toDouble();
+      if (amountInr < minAmount) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+                'Minimum amount required is ₹${minAmount.toStringAsFixed(2)}. Please increase your amount.'),
+            duration: const Duration(seconds: 3),
+          ),
+        );
+        return {
+          'usdtAmount': 0.00,
+          'rate': 0.00,
+        };
+      }
+    }
+
+    // Check maximum amount (last slab)
+    var lastSlab = rateList.last;
+    if (lastSlab is Map) {
+      double maxAmount = (lastSlab['max_amount'] ?? 0.0).toDouble();
+      if (amountInr > maxAmount) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+                'Maximum amount allowed is ₹${maxAmount.toStringAsFixed(2)}. Please decrease your amount or contact support for larger transactions.'),
+            duration: const Duration(seconds: 3),
+          ),
+        );
+        return {
+          'usdtAmount': 0.00,
+          'rate': 0.00,
+        };
+      }
     }
 
     // Find matching rate
@@ -93,11 +131,11 @@ Future<dynamic> convertToUSDTAmount(
       }
     }
 
-    // Check if we found a valid rate
     if (selectedRate == 0.0) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('No matching rate range found for amount: $amountInr'),
+          content: Text(
+              'No rate slab found for ₹${amountInr.toStringAsFixed(2)}. Please adjust your amount.'),
           duration: const Duration(seconds: 3),
         ),
       );
@@ -113,9 +151,9 @@ Future<dynamic> convertToUSDTAmount(
     };
   } catch (e) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Error: ${e.toString()}'),
-        duration: const Duration(seconds: 3),
+      const SnackBar(
+        content: Text('An unexpected error occurred. Please try again later.'),
+        duration: Duration(seconds: 3),
       ),
     );
 

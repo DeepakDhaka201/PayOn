@@ -10,7 +10,7 @@ class UpdateModel extends FlutterFlowModel<UpdateWidget> {
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Custom Action - downloadAndUpdateAPK] action in Button widget.
-  bool? result;
+  String? result;
 
   @override
   void initState(BuildContext context) {}

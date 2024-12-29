@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -463,10 +464,11 @@ class _BuyUsdtVerifyWidgetState extends State<BuyUsdtVerifyWidget>
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                         child: FlutterFlowTimer(
-                          initialTime: getJsonField(
+                          initialTime:
+                              functions.getRemainingMillis(getJsonField(
                             widget.transaction,
-                            r'''$.claim.expire_after''',
-                          ),
+                            r'''$.expires_at''',
+                          ).toString()),
                           getDisplayTime: (value) =>
                               StopWatchTimer.getDisplayTime(
                             value,

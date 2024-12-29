@@ -59,8 +59,8 @@ class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
               color: Color(0xFF181A1F),
               size: 24.0,
             ),
-            onPressed: () {
-              print('IconButton pressed ...');
+            onPressed: () async {
+              context.safePop();
             },
           ),
           title: Text(

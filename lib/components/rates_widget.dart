@@ -185,6 +185,7 @@ class _RatesWidgetState extends State<RatesWidget> {
 
                                       return ListView.separated(
                                         padding: EdgeInsets.zero,
+                                        primary: false,
                                         shrinkWrap: true,
                                         scrollDirection: Axis.vertical,
                                         itemCount: buyCDMRates.length,
@@ -332,6 +333,7 @@ class _RatesWidgetState extends State<RatesWidget> {
 
                                       return ListView.separated(
                                         padding: EdgeInsets.zero,
+                                        primary: false,
                                         shrinkWrap: true,
                                         scrollDirection: Axis.vertical,
                                         itemCount: sellOnlineRates.length,
@@ -437,6 +439,7 @@ class _RatesWidgetState extends State<RatesWidget> {
 
                                       return ListView.separated(
                                         padding: EdgeInsets.zero,
+                                        primary: false,
                                         shrinkWrap: true,
                                         scrollDirection: Axis.vertical,
                                         itemCount: sellCDMRates.length,

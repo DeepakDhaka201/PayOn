@@ -12,7 +12,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 /// Start NonLoggedIn Group Code
 
 class NonLoggedInGroup {
-  static String getBaseUrl() => 'https://samratmatka.com/api/v1';
+  static String getBaseUrl() => 'https://payon.website/api/v1';
   static Map<String, String> headers = {
     'Content-Type': 'application/json',
   };
@@ -128,7 +128,7 @@ class LoggedInGroup {
   static String getBaseUrl({
     String? apiToken = '',
   }) =>
-      'https://samratmatka.com/api/v1';
+      'https://payon.website/api/v1';
   static Map<String, String> headers = {
     'Authorization': 'Bearer [api_token]',
     'Content-Type': 'application/json',
