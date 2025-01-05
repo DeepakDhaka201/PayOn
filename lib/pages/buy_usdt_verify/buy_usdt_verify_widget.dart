@@ -467,7 +467,7 @@ class _BuyUsdtVerifyWidgetState extends State<BuyUsdtVerifyWidget>
                           initialTime:
                               functions.getRemainingMillis(getJsonField(
                             widget.transaction,
-                            r'''$.expires_at''',
+                            r'''$.claim.expires_at''',
                           ).toString()),
                           getDisplayTime: (value) =>
                               StopWatchTimer.getDisplayTime(

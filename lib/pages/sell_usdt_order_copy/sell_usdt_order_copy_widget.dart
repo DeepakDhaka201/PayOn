@@ -380,15 +380,12 @@ class _SellUsdtOrderCopyWidgetState extends State<SellUsdtOrderCopyWidget> {
                     ),
                   ),
                 ),
-                FlutterFlowDropDown<String>(
-                  controller: _model.dropDownValueController ??=
-                      FormFieldController<String>(
-                    _model.dropDownValue ??= '',
-                  ),
-                  options: List<String>.from(_model.bankAccountIds),
-                  optionLabels: _model.bankAccountLabels,
-                  onChanged: (val) async {
-                    safeSetState(() => _model.dropDownValue = val);
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
                     if (!(_model.bankAccountIds.isNotEmpty)) {
                       await showDialog(
                         context: context,
@@ -412,30 +409,46 @@ class _SellUsdtOrderCopyWidgetState extends State<SellUsdtOrderCopyWidget> {
                       return;
                     }
                   },
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: 40.0,
-                  textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
-                        color: FlutterFlowTheme.of(context).netrual900,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.w500,
+                  child: Container(
+                    decoration: const BoxDecoration(),
+                    child: FlutterFlowDropDown<String>(
+                      controller: _model.dropDownValueController ??=
+                          FormFieldController<String>(
+                        _model.dropDownValue ??= '',
                       ),
-                  hintText: 'Choose Bank Account',
-                  icon: Icon(
-                    Icons.keyboard_arrow_down_rounded,
-                    color: FlutterFlowTheme.of(context).secondaryText,
-                    size: 24.0,
+                      options: List<String>.from(_model.bankAccountIds),
+                      optionLabels: _model.bankAccountLabels,
+                      onChanged: (val) =>
+                          safeSetState(() => _model.dropDownValue = val),
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: 40.0,
+                      textStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.override(
+                                fontFamily: 'Inter',
+                                color: FlutterFlowTheme.of(context).netrual900,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                      hintText: 'Choose Bank Account',
+                      icon: Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24.0,
+                      ),
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      elevation: 2.0,
+                      borderColor: FlutterFlowTheme.of(context).netrual400,
+                      borderWidth: 0.0,
+                      borderRadius: 8.0,
+                      margin:
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                      hidesUnderline: true,
+                      isOverButton: false,
+                      isSearchable: false,
+                      isMultiSelect: false,
+                    ),
                   ),
-                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  elevation: 2.0,
-                  borderColor: FlutterFlowTheme.of(context).netrual400,
-                  borderWidth: 0.0,
-                  borderRadius: 8.0,
-                  margin: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                  hidesUnderline: true,
-                  isOverButton: false,
-                  isSearchable: false,
-                  isMultiSelect: false,
                 ),
                 Text(
                   'OR',

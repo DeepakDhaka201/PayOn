@@ -35,3 +35,4 @@ export '/pages/notifications/notifications_widget.dart'
 export '/pages/buy_claim_options/buy_claim_options_widget.dart'
     show BuyClaimOptionsWidget;
 export '/update/update_widget.dart' show UpdateWidget;
+export '/tutorials/tutorials_widget.dart' show TutorialsWidget;

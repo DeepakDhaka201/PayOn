@@ -8,7 +8,12 @@ import 'sign_up_model.dart';
 export 'sign_up_model.dart';
 
 class SignUpWidget extends StatefulWidget {
-  const SignUpWidget({super.key});
+  const SignUpWidget({
+    super.key,
+    this.referralCode,
+  });
+
+  final String? referralCode;
 
   @override
   State<SignUpWidget> createState() => _SignUpWidgetState();
@@ -33,7 +38,10 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
 
-    _model.textController4 ??= TextEditingController();
+    _model.textController4 ??= TextEditingController(
+        text: widget.referralCode != null && widget.referralCode != ''
+            ? widget.referralCode
+            : '');
     _model.textFieldFocusNode4 ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));

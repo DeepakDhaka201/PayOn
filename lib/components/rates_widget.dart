@@ -142,8 +142,8 @@ class _RatesWidgetState extends State<RatesWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            12.0, 0.0, 12.0, 5.0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 5.0),
                         child: Container(
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
@@ -290,8 +290,8 @@ class _RatesWidgetState extends State<RatesWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            12.0, 0.0, 12.0, 0.0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
                         child: Container(
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
@@ -397,8 +397,8 @@ class _RatesWidgetState extends State<RatesWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            12.0, 0.0, 12.0, 5.0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 5.0),
                         child: Container(
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)

@@ -181,7 +181,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                             ),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 24.0, 24.0, 24.0),
+                                  20.0, 20.0, 20.0, 20.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -248,7 +248,21 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                     children: [
                                       FFButtonWidget(
                                         onPressed: () async {
-                                          context.pushNamed('DepositUsdt');
+                                          context.pushNamed(
+                                            'DepositUsdt',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.scale,
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                                duration: Duration(
+                                                    milliseconds: 1000),
+                                              ),
+                                            },
+                                          );
                                         },
                                         text: 'Add Money',
                                         icon: const Icon(
@@ -699,6 +713,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
 
                                             return ListView.separated(
                                               padding: EdgeInsets.zero,
+                                              primary: false,
                                               shrinkWrap: true,
                                               scrollDirection: Axis.vertical,
                                               itemCount:
@@ -954,14 +969,45 @@ class _DashboardWidgetState extends State<DashboardWidget>
                               child: Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 20.0, 20.0, 120.0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.asset(
-                                    'assets/images/Container_2.png',
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
-                                    height: 200.0,
-                                    fit: BoxFit.fill,
+                                child: Container(
+                                  decoration: const BoxDecoration(),
+                                  child: Stack(
+                                    children: [
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed(
+                                            'Tutorials',
+                                            queryParameters: {
+                                              'domain': serializeParam(
+                                                getJsonField(
+                                                  (_model.allRatesResp
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.domain''',
+                                                ).toString(),
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        },
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/Container_2.png',
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            height: 200.0,
+                                            fit: BoxFit.fill,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),

@@ -709,6 +709,7 @@ class _BuyClaimOptionsWidgetState extends State<BuyClaimOptionsWidget>
 
                                         return ListView.separated(
                                           padding: EdgeInsets.zero,
+                                          primary: false,
                                           shrinkWrap: true,
                                           scrollDirection: Axis.vertical,
                                           itemCount: activeTransactions.length,
@@ -1053,291 +1054,315 @@ class _BuyClaimOptionsWidgetState extends State<BuyClaimOptionsWidget>
                               ),
                             ),
                           ),
-                          if (!valueOrDefault<bool>(
-                            _model.showLoader,
-                            false,
-                          ))
-                            Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Builder(
-                                builder: (context) {
-                                  final claimOptions =
-                                      (_model.claimsVar.isNotEmpty
-                                                  ? _model.claimsVar
-                                                  : functions.returnEmptyList())
-                                              ?.toList() ??
-                                          [];
-                                  if (claimOptions.isEmpty) {
-                                    return const TextWidget(
-                                      text: 'No options available',
-                                    );
-                                  }
+                          Container(
+                            decoration: const BoxDecoration(),
+                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            child: Visibility(
+                              visible: !valueOrDefault<bool>(
+                                _model.showLoader,
+                                false,
+                              ),
+                              child: Align(
+                                alignment: const AlignmentDirectional(0.0, -1.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final claimOptions = (_model
+                                                    .claimsVar.isNotEmpty
+                                                ? _model.claimsVar
+                                                : functions.returnEmptyList())
+                                            ?.toList() ??
+                                        [];
+                                    if (claimOptions.isEmpty) {
+                                      return const TextWidget(
+                                        text: 'No options available',
+                                      );
+                                    }
 
-                                  return Wrap(
-                                    spacing: 12.0,
-                                    runSpacing: 12.0,
-                                    alignment: WrapAlignment.start,
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.start,
-                                    direction: Axis.horizontal,
-                                    runAlignment: WrapAlignment.start,
-                                    verticalDirection: VerticalDirection.down,
-                                    clipBehavior: Clip.none,
-                                    children: List.generate(claimOptions.length,
-                                        (claimOptionsIndex) {
-                                      final claimOptionsItem =
-                                          claimOptions[claimOptionsIndex];
-                                      return Material(
-                                        color: Colors.transparent,
-                                        elevation: 2.0,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        child: Container(
-                                          width: 140.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                    return Wrap(
+                                      spacing: 12.0,
+                                      runSpacing: 12.0,
+                                      alignment: WrapAlignment.start,
+                                      crossAxisAlignment:
+                                          WrapCrossAlignment.start,
+                                      direction: Axis.horizontal,
+                                      runAlignment: WrapAlignment.start,
+                                      verticalDirection: VerticalDirection.down,
+                                      clipBehavior: Clip.none,
+                                      children:
+                                          List.generate(claimOptions.length,
+                                              (claimOptionsIndex) {
+                                        final claimOptionsItem =
+                                            claimOptions[claimOptionsIndex];
+                                        return Material(
+                                          color: Colors.transparent,
+                                          elevation: 2.0,
+                                          shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(12.0),
-                                            border: Border.all(
+                                          ),
+                                          child: Container(
+                                            width: 140.0,
+                                            decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              width: 1.0,
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 1.0,
+                                              ),
                                             ),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 12.0, 12.0, 12.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Text(
-                                                      valueOrDefault<String>(
-                                                        getJsonField(
-                                                          claimOptionsItem,
-                                                          r'''$.bank_name''',
-                                                        )?.toString(),
-                                                        'SBI',
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyLarge
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            color: const Color(
-                                                                0xFFF64B00),
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  4.0,
-                                                                  0.0,
-                                                                  4.0,
-                                                                  0.0),
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              const Color(0xFFE8F5E9),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      12.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      12.0, 12.0, 12.0, 12.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        valueOrDefault<String>(
+                                                          getJsonField(
+                                                            claimOptionsItem,
+                                                            r'''$.bank_name''',
+                                                          )?.toString(),
+                                                          'SBI',
                                                         ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      8.0,
-                                                                      8.0,
-                                                                      8.0,
-                                                                      8.0),
-                                                          child: Text(
-                                                            'Active',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodySmall
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
                                                                   color: const Color(
-                                                                      0xFF2E7D32),
+                                                                      0xFFF64B00),
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
                                                                 ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    4.0,
+                                                                    0.0,
+                                                                    4.0,
+                                                                    0.0),
+                                                        child: Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: const Color(
+                                                                0xFFE8F5E9),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12.0),
                                                           ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 5.0, 0.0, 5.0),
-                                                  child: Text(
-                                                    '₹${getJsonField(
-                                                      claimOptionsItem,
-                                                      r'''$.amount_inr''',
-                                                    ).toString()}',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ),
-                                                FFButtonWidget(
-                                                  onPressed: () async {
-                                                    var shouldSetState = false;
-                                                    _model.apiInitiateBuyResp =
-                                                        await LoggedInGroup
-                                                            .initiateBuyCall
-                                                            .call(
-                                                      apiToken:
-                                                          currentAuthenticationToken,
-                                                      claimId: getJsonField(
-                                                        claimOptionsItem,
-                                                        r'''$.id''',
-                                                      ),
-                                                      paymentMode:
-                                                          widget.payMode,
-                                                    );
-
-                                                    shouldSetState = true;
-                                                    if ((_model
-                                                            .apiInitiateBuyResp
-                                                            ?.succeeded ??
-                                                        true)) {
-                                                      context.pushNamed(
-                                                        'BuyUsdtVerify',
-                                                        queryParameters: {
-                                                          'transaction':
-                                                              serializeParam(
-                                                            getJsonField(
-                                                              (_model.apiInitiateBuyResp
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                              r'''$.transaction''',
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        8.0,
+                                                                        8.0,
+                                                                        8.0,
+                                                                        8.0),
+                                                            child: Text(
+                                                              'Active',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    color: const Color(
+                                                                        0xFF2E7D32),
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
                                                             ),
-                                                            ParamType.JSON,
                                                           ),
-                                                        }.withoutNulls,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 5.0,
+                                                                0.0, 5.0),
+                                                    child: Text(
+                                                      '₹${getJsonField(
+                                                        claimOptionsItem,
+                                                        r'''$.amount_inr''',
+                                                      ).toString()}',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodySmall
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                            fontSize: 14.0,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  FFButtonWidget(
+                                                    onPressed: () async {
+                                                      var shouldSetState =
+                                                          false;
+                                                      _model.apiInitiateBuyResp =
+                                                          await LoggedInGroup
+                                                              .initiateBuyCall
+                                                              .call(
+                                                        apiToken:
+                                                            currentAuthenticationToken,
+                                                        claimId: getJsonField(
+                                                          claimOptionsItem,
+                                                          r'''$.id''',
+                                                        ),
+                                                        paymentMode:
+                                                            widget.payMode,
                                                       );
 
-                                                      if (shouldSetState) {
-                                                        safeSetState(() {});
-                                                      }
-                                                      return;
-                                                    } else {
-                                                      ScaffoldMessenger.of(
-                                                              context)
-                                                          .showSnackBar(
-                                                        SnackBar(
-                                                          content: Text(
-                                                            valueOrDefault<
-                                                                String>(
+                                                      shouldSetState = true;
+                                                      if ((_model
+                                                              .apiInitiateBuyResp
+                                                              ?.succeeded ??
+                                                          true)) {
+                                                        context.pushNamed(
+                                                          'BuyUsdtVerify',
+                                                          queryParameters: {
+                                                            'transaction':
+                                                                serializeParam(
                                                               getJsonField(
                                                                 (_model.apiInitiateBuyResp
                                                                         ?.jsonBody ??
                                                                     ''),
-                                                                r'''$.error''',
-                                                              )?.toString(),
-                                                              'Error occured, please retry. ',
+                                                                r'''$.transaction''',
+                                                              ),
+                                                              ParamType.JSON,
                                                             ),
-                                                            style: TextStyle(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
+                                                          }.withoutNulls,
+                                                        );
+
+                                                        if (shouldSetState) {
+                                                          safeSetState(() {});
+                                                        }
+                                                        return;
+                                                      } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                getJsonField(
+                                                                  (_model.apiInitiateBuyResp
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.error''',
+                                                                )?.toString(),
+                                                                'Error occured, please retry. ',
+                                                              ),
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
                                                             ),
+                                                            duration: const Duration(
+                                                                milliseconds:
+                                                                    4000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
                                                           ),
-                                                          duration: const Duration(
-                                                              milliseconds:
-                                                                  4000),
-                                                          backgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .secondary,
-                                                        ),
-                                                      );
+                                                        );
+                                                        if (shouldSetState) {
+                                                          safeSetState(() {});
+                                                        }
+                                                        return;
+                                                      }
+
                                                       if (shouldSetState) {
                                                         safeSetState(() {});
                                                       }
-                                                      return;
-                                                    }
-
-                                                    if (shouldSetState) {
-                                                      safeSetState(() {});
-                                                    }
-                                                  },
-                                                  text: 'Claim',
-                                                  options: FFButtonOptions(
-                                                    width: MediaQuery.sizeOf(
-                                                                context)
-                                                            .width *
-                                                        1.0,
-                                                    height: 32.0,
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    iconPadding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                    elevation: 0.0,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            16.0),
+                                                    },
+                                                    text: 'Claim',
+                                                    options: FFButtonOptions(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          1.0,
+                                                      height: 32.0,
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Inter',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      elevation: 0.0,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              16.0),
+                                                    ),
                                                   ),
-                                                ),
-                                              ].divide(const SizedBox(height: 8.0)),
+                                                ].divide(const SizedBox(height: 8.0)),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      );
-                                    }),
-                                  );
-                                },
+                                        );
+                                      }),
+                                    );
+                                  },
+                                ),
                               ),
                             ),
+                          ),
                         ].divide(const SizedBox(height: 16.0)),
                       ),
                     ),

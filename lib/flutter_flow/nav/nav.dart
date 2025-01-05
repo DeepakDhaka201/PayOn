@@ -100,7 +100,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'SignUp',
           path: '/signup',
-          builder: (context, params) => const SignUpWidget(),
+          builder: (context, params) => SignUpWidget(
+            referralCode: params.getParam(
+              'referralCode',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'otp-verify',
@@ -336,6 +341,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             config: params.getParam(
               'config',
               ParamType.JSON,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Tutorials',
+          path: '/tutorials',
+          builder: (context, params) => TutorialsWidget(
+            domain: params.getParam(
+              'domain',
+              ParamType.String,
             ),
           ),
         )
