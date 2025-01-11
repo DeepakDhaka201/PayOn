@@ -529,7 +529,7 @@ class _DepositUsdtWidgetState extends State<DepositUsdtWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'No Transaction detected. Please do the transaction to continue',
+                                  'Transaction not found. Please complete a transaction to proceed.',
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,

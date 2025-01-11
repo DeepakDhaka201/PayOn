@@ -63,9 +63,10 @@ class _DashboardWidgetState extends State<DashboardWidget>
         _model.showLoader = false;
         safeSetState(() {});
         if (getJsonField(
-          (_model.allRatesResp?.jsonBody ?? ''),
-          r'''$.force_update''',
-        )) {
+              (_model.allRatesResp?.jsonBody ?? ''),
+              r'''$.force_update''',
+            ) &&
+            isWeb) {
           context.pushNamed(
             'Update',
             queryParameters: {
@@ -155,6 +156,43 @@ class _DashboardWidgetState extends State<DashboardWidget>
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).netural100,
+          floatingActionButton: Visibility(
+            visible: isWeb,
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
+              child: FloatingActionButton(
+                onPressed: () async {
+                  await launchURL(getJsonField(
+                    (_model.allRatesResp?.jsonBody ?? ''),
+                    r'''$.domain''',
+                  ).toString());
+                },
+                backgroundColor: FlutterFlowTheme.of(context).primary,
+                elevation: 8.0,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.android,
+                      color: FlutterFlowTheme.of(context).info,
+                      size: 24.0,
+                    ),
+                    Text(
+                      'APK',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Inter',
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            fontSize: 12.0,
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
           body: SafeArea(
             top: true,
             child: Stack(

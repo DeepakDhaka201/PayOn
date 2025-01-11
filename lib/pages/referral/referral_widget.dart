@@ -482,6 +482,7 @@ class _ReferralWidgetState extends State<ReferralWidget>
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily: 'Inter',
+                                                            fontSize: 11.0,
                                                             letterSpacing: 0.0,
                                                           ),
                                                       cursorColor:
@@ -515,7 +516,7 @@ class _ReferralWidgetState extends State<ReferralWidget>
                                                         (_model.apiResultRefInfo
                                                                 ?.jsonBody ??
                                                             ''),
-                                                        r'''$.referral_code''',
+                                                        r'''$.referral_link''',
                                                       ).toString()));
                                                       ScaffoldMessenger.of(
                                                               context)
